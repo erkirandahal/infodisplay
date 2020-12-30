@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from PIL import Image
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
@@ -43,6 +44,15 @@ class Vacancy(models.Model):
 
     def __str__(self):
         return self.vacancy_title
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        vacancy_img = Image.open(self.image.path)
+        if vacancy_img.height > 450 or vacancy_img.width > 450:
+            output_size = (450, 450)
+            vacancy_img.thumbnail(output_size)
+            vacancy_img.save(self.image.path)
 
     def get_absolute_url(self):
         return reverse('vacancy_list')

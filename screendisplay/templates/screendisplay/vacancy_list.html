@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-V List
-</body>
-</html>
+{% extends "screendisplay/basebackend.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-md-6">
+      <div class="d-flex justify-content-between">
+        <div><h6 class="text-center alert alert-info">प्रदेश विवरण</h6></div>
+        <div>
+            <a href="{% url 'vacancy-create' %}" class="btn btn-info btn-bg">
+                  <i class="fas fa-plus"></i> नयाँ थप्ने
+            </a>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">क्र.स.</th>
+            <th scope="col">सूचना</th>
+            <th scope="col">प्रकाशित मिति</th>
+            <th scope="col">एक्सन</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for vacancy in vacancy_list %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ vacancy.vacancy_title }}</td>
+            <td>{{ vacancy.date_posted }}</td>
+            <td>
+                <a href="#" class="btn btn-info btn-xs">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="#" class="btn btn-danger btn-xs">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+{% endblock content %}

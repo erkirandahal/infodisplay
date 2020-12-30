@@ -83,4 +83,7 @@ class VacancyCreateView(CreateView):
 class VacancyListView(ListView):
 	model = Vacancy
 	template_name = 'screendisplay/vacancy_list.html'
-	context_object_name = 'vacancy-list'
+	context_object_name = 'vacancy_list'
+
+class VacancyDetailView(DetailView):
+	model = Vacancy
