@@ -1,0 +1,118 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PIS</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'screendisplay/plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{% static 'screendisplay/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'screendisplay/dist/css/adminlte.min.css' %}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    {% if title %}
+    <title>भीमेश्वर नगरपालिका - {{ title }} </title>
+    {% else %}
+    <title>भीमेश्वर नगरपालिका </title>
+    {% endif %}
+<style>
+
+div .register-form{
+    background-color: #9C9583;
+}
+  div .about-site{
+  background-color: #9C9583;
+}
+body {
+    background-color:#8CAB89
+}
+
+div .footer-section{
+    background-color:#8CAB89;
+}
+
+.footer-section h5, h4{
+    background-color:#8CAB89;
+    text-align: center;
+    font-color: red;
+}
+
+
+</style>
+</head>
+<body>
+<!-- Site wrapper -->
+<div class="">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="about-site col-md-7 mt-3 ml-4 mr-4">
+                <div class="heading-site-nepali">
+                    <legend class="border-bottom mb-1 text-center" style="font-size:32px; font-weight:bold; text-transform:uppercase;">Bhimeshwor Municipality Information Board</legend>
+                    <legend class="border-bottom mb-1 text-center" style="font-size:32px; font-weight:bold; text-transform:uppercase;">भीमेश्वर नगरपालिका सूचना बोर्ड</legend>
+                </div>
+            </div>
+            <div class="register-form col-md-4 mt-3 mr-4 ml-4">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-3 text-center"
+                                style="color:blue; font-size:30px; font-weight:bold;">
+                            Join Today
+                        </legend>
+                        <div class="form-row">
+                            <span class="border-bottom mb-0"></span>
+                            <div class="form-group col-md-12 mb-0">
+                                {{ form.username|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <span class="border-bottom mb-0"></span>
+                            <div class="form-group col-md-12 mb-0">
+                                {{ form.email|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <span class="border-bottom mb-0"></span>
+                            <div class="form-group col-md-12 mb-0">
+                                {{ form.password1|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <span class="border-bottom mb-0"></span>
+                            <div class="form-group col-md-12 mb-0">
+                                {{ form.password2|as_crispy_field }}
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-info" type="submit">Sign Up</button>
+                    </div>
+                </form>
+                <div class="border-top pt-3">
+                    <h5>Already have an account <a class="ml-2" style="font-size:22px;" href="{% url 'login' %}"><strong>Log in</strong></a></h5>
+                </div>
+            </div>
+            <div class="footer-section col-md-12 mt-4"><br>
+                <h5>All rights reserved @ Er. Kiran Dahal</h5>
+                <h4>Find Me On:
+                    <a href="https://twitter.com/reddevilss20"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/kiran.dahal.3726613"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/kiran-dahal-517a7b169/"><i class="fab fa-linkedin"></i></a>
+                </h4>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
