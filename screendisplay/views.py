@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.views import redirect_to_login
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.views.generic import (ListView,
@@ -17,6 +18,15 @@ from .forms import (
 	PublicProcurementCreateForm,
 	VacancyCreateForm
 )
+
+class UserAccessMixin(PermissionRequiredMixin):
+    def dispatch(self, request, *args, **kwargs):
+        if(not self.request.user.is_authenticated):
+            return redirect_to_login(self.request.get_full_path(), self.get_login_url(), self.get_redirect_field_name())
+        if not self.has_permission():
+            return redirect('/')
+        return super(UserAccessMixin, self).dispatch(request, *args, **kwargs)
+
 
 def home(request):
 	context = {
@@ -72,7 +82,7 @@ class PublicProcurementListView(ListView):
 
 ## VACANCY VIEWS STARTS HERE
 
-class VacancyCreateView(CreateView):
+class VacancyCreateView(LoginRequiredMixin, CreateView):
 	form_class = VacancyCreateForm
 	template_name = 'screendisplay/vacancy_form.html'
 
@@ -87,3 +97,23 @@ class VacancyListView(ListView):
 
 class VacancyDetailView(DetailView):
 	model = Vacancy
+
+
+class VacancyUpdateView(UserAccessMixin, UpdateView):
+    raise_exception = False
+    permission_required = 'screendisplay.change_vacancy'
+    permission_denied_message = ""
+    login_url = '/vacancy/list/'
+    redirect_field_name = 'next'
+
+    model = Vacancy
+    fields = ['vacancy_title', 'vacancy_image', 'vacancy_published_status', 'vacancy_website_link']
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
+class VacancyDeleteView(LoginRequiredMixin, UserAccessMixin, DeleteView):
+    permission_required = 'screendisplay.delete_vacancy'
+    model = Vacancy
+    success_url = '/vacancy/list/'

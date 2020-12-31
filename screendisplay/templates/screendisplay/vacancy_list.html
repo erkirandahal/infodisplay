@@ -1,12 +1,12 @@
 {% extends "screendisplay/basebackend.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="col-md-6">
-      <div class="d-flex justify-content-between">
+<div class="col-md-8">
+    <div class="d-flex justify-content-between">
         <div><h6 class="text-center alert alert-info">प्रदेश विवरण</h6></div>
         <div>
             <a href="{% url 'vacancy-create' %}" class="btn btn-info btn-bg">
-                  <i class="fas fa-plus"></i> नयाँ थप्ने
+                <i class="fas fa-plus"></i> नयाँ थप्ने
             </a>
         </div>
     </div>
@@ -16,6 +16,7 @@
             <th scope="col">क्र.स.</th>
             <th scope="col">सूचना</th>
             <th scope="col">प्रकाशित मिति</th>
+            <th scope="col">स्थिति</th>
             <th scope="col">एक्सन</th>
         </tr>
         </thead>
@@ -23,13 +24,14 @@
         {% for vacancy in vacancy_list %}
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
-            <td>{{ vacancy.vacancy_title }}</td>
+            <td><a href="{% url 'vacancy-detail' vacancy.id %}">{{ vacancy.vacancy_title }}</a></td>
             <td>{{ vacancy.date_posted }}</td>
+            <td>if vacancy.vacancy_published_status</td>
             <td>
-                <a href="#" class="btn btn-info btn-xs">
+                <a href="{% url 'vacancy-update' vacancy.id %}" class="btn btn-info btn-xs">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="#" class="btn btn-danger btn-xs">
+                <a href="{% url 'vacancy-delete' vacancy.id %}" class="btn btn-danger btn-xs">
                     <i class="fas fa-trash"></i>
                 </a>
             </td>
@@ -37,6 +39,23 @@
         {% endfor %}
         </tbody>
     </table>
+    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+        {% for vacancy in vacancy_list %}
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-interval="10000">
+                <img src="{{ vacancy.vacancy_image.url }}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        {% endfor %}
+    </div>
 </div>
-<script>
 {% endblock content %}

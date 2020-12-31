@@ -7,6 +7,8 @@ from . views import (
     VacancyCreateView,
     VacancyListView,
     VacancyDetailView,
+    VacancyUpdateView,
+    VacancyDeleteView,
 
     )
 urlpatterns = [
@@ -16,4 +18,7 @@ urlpatterns = [
     path('vacancy/create/', VacancyCreateView.as_view(), name='vacancy-create'),
     path('vacancy/list/', VacancyListView.as_view(), name='vacancy-list'),
     path('vacancy/<int:pk>/', VacancyDetailView.as_view(), name='vacancy-detail'),
+    path('vacancy/update/<int:pk>', VacancyUpdateView.as_view(), name='vacancy-update'),
+    path('vacancy/delete/<int:pk>', VacancyDeleteView.as_view(), name='vacancy-delete'),
+
 ]
