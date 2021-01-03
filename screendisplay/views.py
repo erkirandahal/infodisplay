@@ -161,3 +161,53 @@ class OfficialListView(ListView):
 
 class OfficialDetailView(DetailView):
 	model = Official
+
+
+class OfficialUpdateView(UserAccessMixin, UpdateView):
+	raise_exception = False
+	permission_required = 'screendisplay.change_official'
+	permission_denied_message = ""
+	login_url = '/official/list/'
+	redirect_field_name = 'next'
+
+	model = Official
+	fields = ['official_name', 'official_designation', 'official_phoneno', 'official_roomno', 'official_published_status', 'official_image']
+
+	def form_valid(self, form):
+		form.instance.created_by = self.request.user
+		return super().form_valid(form)
+
+# GET MORE THAN ONE VIEW TO RENDER IN SINGLE PAGE,
+
+# class AlldataView(LoginRequiredMixin, ListView):
+# 	template_name = 'screendisplay/article_list.html'
+# 	queryset = Official.objects.all()
+#
+# 	def get_context_data(self, **kwargs):
+# 		context = super(AlldataView, self).get_context_data(**kwargs)
+# 		context['vacancy_list'] = Vacancy.objects.all()
+# 		context['official_list'] = self.queryset
+# 		return context
+
+# class AlldataListView(LoginRequiredMixin, ListView):
+#     template_name = 'officialdata/allofficialdata_list.html'
+#     queryset = Servicegroup.objects.all()
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(AllOfficialdataListView, self).get_context_data(**kwargs)
+#         context['designation_list'] = Designation.objects.all()
+#         context['sectiontype_list'] = Sectiontype.objects.all()
+#         context['employeetype_list'] = Employeetype.objects.all()
+#         context['servicegroup_list'] = self.queryset
+#         return context
+
+class AlldisplaydataListView(ListView):
+	template_name = 'screendisplay/data_list.html'
+	queryset = Vacancy.objects.all()
+
+	def get_context_data(self, **kwargs):
+		context = super(AlldisplaydataListView, self).get_context_data(**kwargs)
+		context['official_list'] = Official.objects.all()
+		context['publicprocurement_list'] = PublicProcurement.objects.all()
+		context['vacancy_list'] = self.queryset
+		return context

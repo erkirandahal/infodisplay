@@ -10,11 +10,11 @@
             </div>
             {% endif %}
         </div>
-        <img style="align:right" src="{{ object.official_image.url }}">
+        <img src="{{ object.official_image.url }}">
         <h2 class="article-title" style="text-align:left;">{{ object.official_name }}</h2>
-        <h2 class="article-title" style="text-align:left;">पद{{ object.official_designation }}</h2>
-        <h2 class="article-title" style="text-align:left;">सम्पर्क नं{{ object.official_phoneno }}</h2>
-        <h2 class="article-title" style="text-align:left;">कोठा नं.{{ object.official_roomno }}</h2>
+        <h2 class="article-title" style="text-align:left;">पद: {{ object.official_designation }}</h2>
+        <h2 class="article-title" style="text-align:left;">सम्पर्क नं: {{ object.official_phoneno }}</h2>
+        <h2 class="article-title" style="text-align:left;">कोठा नं.: {{ object.official_roomno }}</h2>
     </div>
 </article>
 {% endblock content %}
