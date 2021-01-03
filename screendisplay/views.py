@@ -13,10 +13,12 @@ from . models import (
 	Article,
 	PublicProcurement,
 	Vacancy,
+	Official,
 	)
 from .forms import (
 	PublicProcurementCreateForm,
-	VacancyCreateForm
+	VacancyCreateForm,
+	OfficialCreateForm,
 )
 
 class UserAccessMixin(PermissionRequiredMixin):
@@ -75,10 +77,29 @@ class PublicProcurementCreateView(CreateView):
 class PublicProcurementListView(ListView):
 	model = PublicProcurement
 	template_name = 'screendisplay/publicproocurement_list.html'
-	context_object_name = 'publicprocurement-list'
-	ordering = ['-date_posted']
-	paginate_by = 5
+	context_object_name = 'publicprocurement_list'
 
+class PublicProcurementDetailView(DetailView):
+	model = PublicProcurement
+
+class PublicProcurementUpdateView(UserAccessMixin, UpdateView):
+    raise_exception = False
+    permission_required = 'screendisplay.change_publicprocurement'
+    permission_denied_message = ""
+    login_url = 'procurement/list/'
+    redirect_field_name = 'next'
+
+    model = PublicProcurement
+    fields = ['publicprocurement_title', 'publicprocurement_image', 'published_status', 'website_link']
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
+class PublicProcurementDeleteView(LoginRequiredMixin, UserAccessMixin, DeleteView):
+    permission_required = 'screendisplay.delete_publicprocurement'
+    model = PublicProcurement
+    success_url = '/publicprocurement/list/'
 
 ## VACANCY VIEWS STARTS HERE
 
@@ -100,20 +121,43 @@ class VacancyDetailView(DetailView):
 
 
 class VacancyUpdateView(UserAccessMixin, UpdateView):
-    raise_exception = False
-    permission_required = 'screendisplay.change_vacancy'
-    permission_denied_message = ""
-    login_url = '/vacancy/list/'
-    redirect_field_name = 'next'
+	raise_exception = False
+	permission_required = 'screendisplay.change_vacancy'
+	permission_denied_message = ""
+	login_url = '/vacancy/list/'
+	redirect_field_name = 'next'
 
-    model = Vacancy
-    fields = ['vacancy_title', 'vacancy_image', 'vacancy_published_status', 'vacancy_website_link']
+	model = Vacancy
+	fields = ['vacancy_title', 'vacancy_image', 'vacancy_published_status', 'vacancy_website_link']
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
+	def form_valid(self, form):
+		form.instance.created_by = self.request.user
+		return super().form_valid(form)
 
 class VacancyDeleteView(LoginRequiredMixin, UserAccessMixin, DeleteView):
-    permission_required = 'screendisplay.delete_vacancy'
-    model = Vacancy
-    success_url = '/vacancy/list/'
+	permission_required = 'screendisplay.delete_vacancy'
+	model = Vacancy
+	success_url = '/vacancy/list/'
+
+## OFFICIAL VIEWS STARTS HERE
+
+class OfficialCreateView(LoginRequiredMixin, CreateView):
+	form_class = OfficialCreateForm
+	template_name = 'screendisplay/official_form.html'
+
+	def form_valid(self, form):
+		form.instance.created_by = self.request.user
+		return super().form_valid(form)
+
+class OfficialListView(ListView):
+	model = Official
+	template_name = 'screendisplay/official_list.html'
+	context_object_name = 'official_list'
+
+class OfficialListView(ListView):
+	model = Official
+	template_name = 'screendisplay/official_list.html'
+	context_object_name = 'official_list'
+
+class OfficialDetailView(DetailView):
+	model = Official

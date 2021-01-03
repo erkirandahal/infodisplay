@@ -1,17 +1,42 @@
-{% extends "screendisplay/base.html" %}
+{% extends "screendisplay/basebackend.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-PP LIst <a href="{% url 'publicprocurement-create' %}">ABC</a>
-<a class="nav-item nav-link" href="{% url 'publicprocurement-create' %}">New Post</a>
+<div class="col-md-8">
+    <div class="d-flex justify-content-between">
+        <div><h6 class="text-center alert alert-info">बोलपत्र विवरण</h6></div>
+        <div>
+            <a href="{% url 'publicprocurement-create' %}" class="btn btn-info btn-bg">
+                <i class="fas fa-plus"></i> नयाँ थप्ने
+            </a>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">क्र.स.</th>
+            <th scope="col">सूचना</th>
+            <th scope="col">प्रकाशित मिति</th>
+            <th scope="col">स्थिति</th>
+            <th scope="col">एक्सन</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for procurement in publicprocurement_list %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td><a href="{% url 'publicprocurement-detail' procurement.id %}">{{ procurement.publicprocurement_title }}</a></td>
+            <td>{{ procurement.date_posted }}</td>
+            <td>if procurement.published_status</td>
+            <td>
+                <a href="{% url 'publicprocurement-update' procurement.id %}" class="btn btn-info btn-xs">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="{% url 'publicprocurement-delete' procurement.id %}" class="btn btn-danger btn-xs">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-PP LIst <a href="{% url 'publicprocurment-create' %}">ABC</a>
-<a class="nav-item nav-link" href="{% url 'publicprocurment-create' %}">New Post</a>
-</body>
-</html>

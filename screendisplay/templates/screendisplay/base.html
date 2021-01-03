@@ -56,8 +56,8 @@
                                 <h4 style="background-color:red; text-align: center;"> भीमेश्वर नगरपालिका डिजिटल सूचना
                                     बोर्ड </h4>
                             </div>
-                            <div class="card-body">
-                                <div class="row col-md-12">
+                            <div class="card-body row">
+                                <div class="row col-md-11">
                                     <div class="col-md-12">
                                         {% if messages %}
                                         {% for message in messages %}
@@ -69,6 +69,13 @@
                                         {% block content %}{% endblock %}
                                     </div>
                                 </div>
+
+                                <div class="row col-md-1">
+                                    <div class="col-md-12">
+                                        {% block content2 %}{% endblock %}
+                                    </div>
+                                </div>
+
                                 <!-- /.card-body -->
 
 

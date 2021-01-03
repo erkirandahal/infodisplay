@@ -3,8 +3,12 @@
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-<!--            <a class="mr-2" href="#">{{ object.created_by }}</a>-->
-<!--            <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>-->
+            {% if user.is_authenticated  %}
+            <div>
+                <a class="btn btn-secondary btn-small mt-1 mb-1" href="{% url 'vacancy-update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-small mt-1 mb-1" href="{% url 'vacancy-delete' object.id %}">Delete</a>
+            </div>
+            {% endif %}
         </div>
         <h2 class="article-title" style="text-align:left;">{{ object.vacancy_title }}</h2>
         <img src="{{ object.vacancy_image.url }}">

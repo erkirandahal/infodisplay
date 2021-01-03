@@ -1,0 +1,17 @@
+{% extends "screendisplay/basebackend.html" %}
+{% block content %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            {% if user.is_authenticated %}
+            <div>
+                <a class="btn btn-secondary btn-small mt-1 mb-1" href="{% url 'publicprocurement-update' procurement.id %}">Update</a>
+                <a class="btn btn-danger btn-small mt-1 mb-1" href="{% url 'publicprocurement-delete' procurement.id %}">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+        <h2 class="article-title" style="text-align:left;">{{ object.publicprocurement_title }}</h2>
+        <img src="{{ object.publicprocurement_image.url }}">
+    </div>
+</article>
+{% endblock content %}

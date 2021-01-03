@@ -1,0 +1,20 @@
+{% extends "screendisplay/basebackend.html" %}
+{% block content %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            {% if user.is_authenticated  %}
+            <div>
+                <a class="btn btn-secondary btn-small mt-1 mb-1" href="#">Update</a>
+                <a class="btn btn-danger btn-small mt-1 mb-1" href="#">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+        <img style="align:right" src="{{ object.official_image.url }}">
+        <h2 class="article-title" style="text-align:left;">{{ object.official_name }}</h2>
+        <h2 class="article-title" style="text-align:left;">पद{{ object.official_designation }}</h2>
+        <h2 class="article-title" style="text-align:left;">सम्पर्क नं{{ object.official_phoneno }}</h2>
+        <h2 class="article-title" style="text-align:left;">कोठा नं.{{ object.official_roomno }}</h2>
+    </div>
+</article>
+{% endblock content %}
