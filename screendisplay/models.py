@@ -83,10 +83,35 @@ class Official(models.Model):
         super().save(*args, **kwargs)
 
         official_image = Image.open(self.official_image.path)
-        if official_image.height > 120 or official_image.width > 120:
-            output_size = (120, 120)
+        if official_image.height > 140 or official_image.width > 140:
+            output_size = (140, 140)
             official_image.thumbnail(output_size)
             official_image.save(self.official_image.path)
 
     def get_absolute_url(self):
         return reverse('official-list')
+
+class OfficeInfo(models.Model):
+    office_name = models.CharField(max_length=150, verbose_name="नाम थर")
+    office_sec_name = models.CharField(max_length=50, verbose_name="पद")
+    office_website = models.CharField(max_length=50, verbose_name="फोन नं")
+    office_email = models.CharField(max_length=150, verbose_name="कोठा नं.")
+    office_phoneno = models.CharField(max_length=50, verbose_name="कोठा नं.")
+    office_emergencyno = models.CharField(max_length=50, verbose_name="कोठा नं.")
+    date_posted = models.DateTimeField(default=timezone.now)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.office_name
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        office_image = Image.open(self.office_image.path)
+        if office_image.height > 140 or office_image.width > 140:
+            output_size = (140, 140)
+            office_image.thumbnail(output_size)
+            office_image.save(self.office_image.path)
+
+    def get_absolute_url(self):
+        return reverse('office-list')

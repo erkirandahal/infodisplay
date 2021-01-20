@@ -177,6 +177,12 @@ class OfficialUpdateView(UserAccessMixin, UpdateView):
 		form.instance.created_by = self.request.user
 		return super().form_valid(form)
 
+
+class OfficialDeleteView(LoginRequiredMixin, UserAccessMixin, DeleteView):
+	permission_required = 'screendisplay.delete_official'
+	model = Official
+	success_url = '/official/list/'
+
 # GET MORE THAN ONE VIEW TO RENDER IN SINGLE PAGE,
 
 # class AlldataView(LoginRequiredMixin, ListView):

@@ -32,6 +32,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
+    <!--  Link Custom Stylesheet for this base template -->
+    <link rel="stylesheet" href="{% static 'screendisplay/customcss/base.css' %}">
     {% if title %}
     <title>Django screendisplay - {{ title }} </title>
     {% else %}
@@ -57,7 +60,7 @@
                                     बोर्ड </h4>
                             </div>
                             <div class="card-body row">
-                                <div class="row col-md-11">
+                                <div class="row col-md-10">
                                     <div class="col-md-12">
                                         {% if messages %}
                                         {% for message in messages %}
@@ -69,11 +72,9 @@
                                         {% block content %}{% endblock %}
                                     </div>
                                 </div>
-
-                                <div class="row col-md-1">
-                                    <div class="col-md-12">
+                                <div class="card-body row col-md-1">
                                         {% block content2 %}{% endblock %}
-                                    </div>
+
                                 </div>
 
                                 <!-- /.card-body -->

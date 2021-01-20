@@ -1,81 +1,84 @@
 {% extends "screendisplay/base.html" %}
 {% block content %}
-       <!-- About Section Content-->
-         <div class="row">
-            <div class="col-lg-3 ml-auto">
-                <h3 class="block-header">सूचना तथा समाचार</h3>
-                <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
-            </div>
-            <div class="col-lg-3 ml-auto">
-                <h3 class="block-header">खरिद तथा बाेलपत्र</h3>
-                <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
-            </div>
+<!-- About Section Content-->
+<div class="row">
+    <div class="col-lg-3 ml-auto">
+        <h3 class="block-header">सूचना तथा समाचार</h3>
+        <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
+    </div>
+    <div class="col-lg-3 ml-auto">
+        <h3 class="block-header">खरिद तथा बाेलपत्र</h3>
+        <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
+    </div>
 
-            <div class="col-lg-3 ml-auto">
-                <h3 class="block-header">कर्मचारी पदपूर्ति</h3>
-                {% for vacancy in vacancy_list %}
-                    Name: {{ vacancy.vacancy_title }}
-                {% endfor %}
-                <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
-            </div>
-            <div class="col-lg-3 ml-auto">
-                <h3 class="block-header">भिडियाे</h3>
+    <div class="col-lg-3 ml-auto">
+        <h3 class="block-header">कर्मचारी पदपूर्ति</h3>
+        {% for vacancy in vacancy_list %}
+        Name: {{ vacancy.vacancy_title }}
+        {% endfor %}
+        <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
+    </div>
+    <div class="col-lg-3 ml-auto">
+        <h3 class="block-header">भिडियाे</h3>
 
-                <iframe width="230" height="130" src="https://www.youtube.com/embed/zuxzE7--RYM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="230" height="130" src="https://www.youtube.com/embed/zuxzE7--RYM" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
 
-            </div>
-        </div>
+    </div>
+</div>
 
-        <div class="row">
-            <div class="col-lg-3 ml-auto">
-                <h3 class="block-header">प्रगति विवरण</h3>
-                <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
-            </div>
-            <div class="col-lg-9 ml-auto">
-                <h3 class="block-header">नागरिक वडापत्र</h3>
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                        <th scope="col">क्र‍स‍</th>
-                        <th scope="col">सेवाकाे विवरण</th>
-                        <th scope="col">शाखा/इका</th>
-                        <th scope="col">काेठा न‌‍</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                      <th scope="row">१</th>
-                      <td>घटना दर्ता</td>
-                      <td>पन्जीकरण इकाइ</td>
-                      <td>१०</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">१</th>
-                      <td>घटना दर्ता</td>
-                      <td>पन्जीकरण इकाइ</td>
-                      <td>१०</td>
-                  </tr>
+<div class="row">
+    <div class="col-lg-3 ml-auto">
+        <h3 class="block-header">प्रगति विवरण</h3>
+        <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
+    </div>
+    <div class="col-lg-9 ml-auto">
+        <h3 class="block-header">नागरिक वडापत्र</h3>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">क्र‍स‍</th>
+                <th scope="col">सेवाकाे विवरण</th>
+                <th scope="col">शाखा/इका</th>
+                <th scope="col">काेठा न‌‍</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">१</th>
+                <td>घटना दर्ता</td>
+                <td>पन्जीकरण इकाइ</td>
+                <td>१०</td>
+            </tr>
+            <tr>
+                <th scope="row">१</th>
+                <td>घटना दर्ता</td>
+                <td>पन्जीकरण इकाइ</td>
+                <td>१०</td>
+            </tr>
 
-              </tbody>
-          </table>
-      </div>
-  </div>
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock content %}
 
 {% block content2 %}
-       <!-- About Section Content-->
-         <div class="row">
-            <div class="">
-                <h3 class="block-header" style="color:red; text-align:center; font-weight:bold">पदाधिकारी</h3>
-                {% for official in official_list %}
-                <div class="official-head">
-                     <h6 class="official-name">Name: {{ official.official_name }}</h6>
-                </div>
-                {% endfor %}
-
-                {% for vacancy in vacancy_list %}
-                    <h6> {{ vacancy.vacancy_title }}</h6>
-                {% endfor %}
-            </div>
+<!-- About Section Content-->
+<div class="row">
+    <div class="official-block">
+        <h3 class="block-header" style="color:red; text-align:center; font-weight:bold">पदाधिकारी</h3>
+        {% for official in official_list %}
+        <div class="official-head">
+            <p class="aligncenter">
+                <img src="{{ official.official_image.url }}" border="4" width="220" height="220" alt="Officials image"/>
+            </p>
+            <h4 class="official-name" style="text-align: center">{{ official.official_name }} </h4>
+            <h4 class="official-title" style="text-align: center"> {{ official.official_designation }} </h4>
+            <h4 class="official-phoneno" style="text-align: center"> {{ official.official_phoneno }} </h4>
         </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content2 %}

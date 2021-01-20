@@ -16,6 +16,7 @@ from . views import (
     OfficialListView,
     OfficialDetailView,
     OfficialUpdateView,
+    OfficialDeleteView,
     AlldisplaydataListView,
 
     )
@@ -35,5 +36,6 @@ urlpatterns = [
     path('official/list/', OfficialListView.as_view(), name='official-list'),
     path('official/<int:pk>/', OfficialDetailView.as_view(), name='official-detail'),
     path('official/update/<int:pk>', OfficialUpdateView.as_view(), name='official-update'),
+    path('official/delete/<int:pk>', OfficialDeleteView.as_view(), name='official-delete'),
     path('data/list', AlldisplaydataListView.as_view(), name='displaydata-home'),
 ]
