@@ -18,10 +18,12 @@ from . views import (
     OfficialUpdateView,
     OfficialDeleteView,
     AlldisplaydataListView,
+    OfficeCreateView,
+    OfficeListView,
 
     )
 urlpatterns = [
-    path('', ArticleListView.as_view(), name='screendisplay-home'),
+    path('', AlldisplaydataListView.as_view(), name='displaydata-home'),
     path('publicprocurement/create/', PublicProcurementCreateView.as_view(), name='publicprocurement-create'),
     path('publicprocurement/list/', PublicProcurementListView.as_view(), name='publicprocurement-list'),
     path('publicprocurement/<int:pk>/', PublicProcurementDetailView.as_view(), name='publicprocurement-detail'),
@@ -38,4 +40,6 @@ urlpatterns = [
     path('official/update/<int:pk>', OfficialUpdateView.as_view(), name='official-update'),
     path('official/delete/<int:pk>', OfficialDeleteView.as_view(), name='official-delete'),
     path('data/list', AlldisplaydataListView.as_view(), name='displaydata-home'),
+    path('office/create/', OfficeCreateView.as_view(), name='office-create'),
+    path('office/list/', OfficeListView.as_view(), name='office-list'),
 ]

@@ -92,15 +92,18 @@ class Official(models.Model):
         return reverse('official-list')
 
 class OfficeInfo(models.Model):
-    office_name = models.CharField(max_length=150, verbose_name="नाम थर")
-    office_sec_name = models.CharField(max_length=50, verbose_name="पद")
-    office_website = models.CharField(max_length=50, verbose_name="फोन नं")
-    office_email = models.CharField(max_length=150, verbose_name="कोठा नं.")
-    office_phoneno = models.CharField(max_length=50, verbose_name="कोठा नं.")
-    office_emergencyno = models.CharField(max_length=50, verbose_name="कोठा नं.")
+    office_name = models.CharField(max_length=150, verbose_name="नाम")
+    office_sec_name = models.CharField(max_length=50, verbose_name="नाम")
+    office_website = models.CharField(max_length=50, verbose_name="वेबसाइट")
+    office_email = models.CharField(max_length=150, verbose_name="इमेल")
+    office_phoneno = models.CharField(max_length=50, verbose_name="फोन नं.")
+    office_emergencyno = models.CharField(max_length=50, verbose_name="अन्य आपतकालीन नं.")
     date_posted = models.DateTimeField(default=timezone.now)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    office_image = models.ImageField(upload_to='office_uploaded_image', verbose_name="फोटो")
+    office_address_province = models.CharField(max_length=50, verbose_name="प्रदेश", blank=True)
+    office_address_district = models.CharField(max_length=50, verbose_name="जिल्ला", blank=True)
+    office_address_locallevel = models.CharField(max_length=50, verbose_name="पालिका", blank=True)
     def __str__(self):
         return self.office_name
 

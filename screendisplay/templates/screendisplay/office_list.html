@@ -1,0 +1,42 @@
+{% extends "screendisplay/basebackend.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-md-8">
+    <div class="d-flex justify-content-between">
+        <div><h6 class="text-center alert alert-info">पदाधिकारी विवरण</h6></div>
+        <div>
+            <a href="{% url 'official-create' %}" class="btn btn-info btn-bg">
+                <i class="fas fa-plus"></i> नयाँ थप्ने
+            </a>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">क्र.स.</th>
+            <th scope="col">नाम</th>
+            <th scope="col">पद</th>
+            <th scope="col">सम्पर्क नं</th>
+            <th scope="col">एक्सन</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for office in office_list %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td><a href="{% url 'official-detail' official.id %}">{{ office.office_name }}</a></td>
+            <td>{{ office.office_address_province }}</td>
+            <td>{{ office.office_website }}</td>
+            <td>
+<!--                <a href="{% url 'official-update' official.id %}" class="btn btn-info btn-xs">-->
+<!--                    <i class="fas fa-edit"></i>-->
+<!--                </a>-->
+<!--                <a href="{% url 'official-delete' official.id %}" class="btn btn-danger btn-xs">-->
+<!--                    <i class="fas fa-trash"></i>-->
+<!--                </a>-->
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

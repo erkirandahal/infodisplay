@@ -14,11 +14,13 @@ from . models import (
 	PublicProcurement,
 	Vacancy,
 	Official,
+	OfficeInfo,
 	)
 from .forms import (
 	PublicProcurementCreateForm,
 	VacancyCreateForm,
 	OfficialCreateForm,
+	OfficeCreateForm,
 )
 
 class UserAccessMixin(PermissionRequiredMixin):
@@ -149,10 +151,10 @@ class OfficialCreateView(LoginRequiredMixin, CreateView):
 		form.instance.created_by = self.request.user
 		return super().form_valid(form)
 
-class OfficialListView(ListView):
-	model = Official
-	template_name = 'screendisplay/official_list.html'
-	context_object_name = 'official_list'
+# class OfficialListView(ListView):
+# 	model = Official
+# 	template_name = 'screendisplay/official_list.html'
+# 	context_object_name = 'official_list'
 
 class OfficialListView(ListView):
 	model = Official
@@ -183,6 +185,54 @@ class OfficialDeleteView(LoginRequiredMixin, UserAccessMixin, DeleteView):
 	model = Official
 	success_url = '/official/list/'
 
+
+
+
+
+## Office Information VIEWS STARTS HERE
+
+class OfficeCreateView(LoginRequiredMixin, CreateView):
+	form_class = OfficeCreateForm
+	template_name = 'screendisplay/office_form.html'
+
+	def form_valid(self, form):
+		form.instance.created_by = self.request.user
+		return super().form_valid(form)
+
+class OfficeListView(ListView):
+	model = OfficeInfo
+	template_name = 'screendisplay/office_list.html'
+	context_object_name = 'office_list'
+#
+# class OfficialListView(ListView):
+# 	model = Official
+# 	template_name = 'screendisplay/official_list.html'
+# 	context_object_name = 'official_list'
+#
+class OfficeDetailView(DetailView):
+	model = OfficeInfo
+#
+#
+# class OfficialUpdateView(UserAccessMixin, UpdateView):
+# 	raise_exception = False
+# 	permission_required = 'screendisplay.change_official'
+# 	permission_denied_message = ""
+# 	login_url = '/official/list/'
+# 	redirect_field_name = 'next'
+#
+# 	model = Official
+# 	fields = ['official_name', 'official_designation', 'official_phoneno', 'official_roomno', 'official_published_status', 'official_image']
+#
+# 	def form_valid(self, form):
+# 		form.instance.created_by = self.request.user
+# 		return super().form_valid(form)
+#
+#
+# class OfficialDeleteView(LoginRequiredMixin, UserAccessMixin, DeleteView):
+# 	permission_required = 'screendisplay.delete_official'
+# 	model = Official
+# 	success_url = '/official/list/'
+
 # GET MORE THAN ONE VIEW TO RENDER IN SINGLE PAGE,
 
 # class AlldataView(LoginRequiredMixin, ListView):
@@ -206,6 +256,7 @@ class OfficialDeleteView(LoginRequiredMixin, UserAccessMixin, DeleteView):
 #         context['employeetype_list'] = Employeetype.objects.all()
 #         context['servicegroup_list'] = self.queryset
 #         return context
+
 
 class AlldisplaydataListView(ListView):
 	template_name = 'screendisplay/data_list.html'

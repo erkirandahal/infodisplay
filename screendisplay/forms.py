@@ -3,6 +3,7 @@ from .models import (
     PublicProcurement,
     Vacancy,
     Official,
+    OfficeInfo,
     )
 
 class PublicProcurementCreateForm(forms.ModelForm):
@@ -19,3 +20,9 @@ class OfficialCreateForm(forms.ModelForm):
     class Meta:
         model = Official
         fields = ['official_name', 'official_designation', 'official_phoneno', 'official_roomno', 'official_published_status', 'official_image']
+
+
+class OfficeCreateForm(forms.ModelForm):
+    class Meta:
+        model = OfficeInfo
+        fields = ['office_name', 'office_sec_name', 'office_website', 'office_email', 'office_phoneno', 'office_emergencyno', 'office_address_province', 'office_address_district', 'office_address_locallevel', 'office_image']
