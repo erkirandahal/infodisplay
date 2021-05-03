@@ -203,11 +203,11 @@ class OfficeListView(ListView):
 	model = OfficeInfo
 	template_name = 'screendisplay/office_list.html'
 	context_object_name = 'office_list'
-#
-# class OfficialListView(ListView):
-# 	model = Official
-# 	template_name = 'screendisplay/official_list.html'
-# 	context_object_name = 'official_list'
+
+class OfficeListView(ListView):
+	model = OfficeInfo
+	template_name = 'screendisplay/office_list.html'
+	context_object_name = 'office_list'
 #
 class OfficeDetailView(DetailView):
 	model = OfficeInfo
