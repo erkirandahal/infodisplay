@@ -266,5 +266,6 @@ class AlldisplaydataListView(ListView):
 		context = super(AlldisplaydataListView, self).get_context_data(**kwargs)
 		context['official_list'] = Official.objects.all()
 		context['publicprocurement_list'] = PublicProcurement.objects.all()
+		context['officeinfo_list'] = OfficeInfo.objects.all()
 		context['vacancy_list'] = self.queryset
 		return context

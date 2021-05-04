@@ -56,7 +56,14 @@
                         <!-- Default box -->
                         <div class="card">
                             <div class="card-header">
-                                <h4 style="background-color:red; text-align: center;"> भीमेश्वर नगरपालिका डिजिटल सूचना
+                                {% for office in officeinfo_list %}
+                                <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_name }}</h3>
+                                <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_sec_name }}</h3>
+<!--                                <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_address_locallevel }}, {{ office.office_address_district }}</h3>-->
+<!--                                <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_address_district }}</h3>-->
+                                {% endfor %}
+                                <h4 style="background-color:red; text-align: center; font-size:24px; font-weight:bold"> भीमेश्वर नगरपालिका
+                                    डिजिटल सूचना
                                     बोर्ड </h4>
                             </div>
                             <div class="card-body row">
@@ -73,7 +80,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body row col-md-1">
-                                        {% block content2 %}{% endblock %}
+                                    {% block content2 %}{% endblock %}
 
                                 </div>
 
@@ -91,11 +98,14 @@
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.5
+        <div class="footer-class">
+            {% for office in officeinfo_list %}
+            <h3 style="color:red; text-align:center; font-size: 24px;">वेवसाइट: {{ office.office_website }}, इमेल: {{ office.office_email }}, सम्पर्क नं. {{ office.office_phoneno }}, आपतकालिन सम्पर्क नं. {{ office.office_emergencyno }}</h3>
+
+            {% endfor %}
         </div>
-        <strong>Copyright &copy; 2014-2019.</strong> All rights
-        reserved.
+        <h3 style="color:green; text-align:center; font-size: 18px;"><strong>Copyright &copy; 2021.</strong> Rights
+            reserved to the developer</h3>
     </footer>
 
     <!-- Control Sidebar -->
@@ -144,6 +154,7 @@ function printRecommendation(value){
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
+
 
 
 
