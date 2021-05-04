@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -101,7 +100,6 @@
         <div class="footer-class">
             {% for office in officeinfo_list %}
             <h3 style="color:red; text-align:center; font-size: 24px;">वेवसाइट: {{ office.office_website }}, इमेल: {{ office.office_email }}, सम्पर्क नं. {{ office.office_phoneno }}, आपतकालिन सम्पर्क नं. {{ office.office_emergencyno }}</h3>
-
             {% endfor %}
         </div>
         <h3 style="color:green; text-align:center; font-size: 18px;"><strong>Copyright &copy; 2021.</strong> Rights
@@ -114,6 +112,7 @@
     </aside>
     <!-- /.control-sidebar -->
 </div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
