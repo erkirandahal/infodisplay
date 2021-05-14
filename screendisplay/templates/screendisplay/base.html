@@ -31,13 +31,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-
-    <!--  Link Custom Stylesheet for this base template -->
-    <link rel="stylesheet" href="{% static 'screendisplay/customcss/base.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style type="text/css">
+    </style>
     {% if title %}
-    <title>Django screendisplay - {{ title }} </title>
+    <title>Django Blog - {{ title }} </title>
     {% else %}
-    <title>Django screendisplay </title>
+    <title>Django Blog </title>
     {% endif %}
 
 </head>

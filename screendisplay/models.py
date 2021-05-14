@@ -58,8 +58,8 @@ class Vacancy(models.Model):
         super().save(*args, **kwargs)
 
         vacancy_image = Image.open(self.vacancy_image.path)
-        if vacancy_image.height > 450 or vacancy_image.width > 450:
-            output_size = (450, 450)
+        if vacancy_image.height > 3000 or vacancy_image.width > 3000:
+            output_size = (1600, 1200)
             vacancy_image.thumbnail(output_size)
             vacancy_image.save(self.vacancy_image.path)
 

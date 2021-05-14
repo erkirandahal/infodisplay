@@ -2,64 +2,43 @@
 {% block content %}
 <!-- About Section Content-->
 <div class="row">
-    <div class="col-lg-3 ml-auto">
-        <h3 class="block-header">सूचना तथा समाचार</h3>
+     <h3 class="block-header text-center" style="text-weight:bold; font-size:32px;">महत्वपूर्ण प्रमुख समाचार</h3>
         <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
-    </div>
-    <div class="col-lg-3 ml-auto">
-        <h3 class="block-header">खरिद तथा बाेलपत्र</h3>
-        <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
-    </div>
+    <div class="carousel-inner" role="listbox">
 
-    <div class="col-lg-3 ml-auto">
-        <h3 class="block-header">कर्मचारी पदपूर्ति</h3>
-        {% for vacancy in vacancy_list %}
-        Name: {{ vacancy.vacancy_title }}
-        {% endfor %}
-        <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
-    </div>
-    <div class="col-lg-3 ml-auto">
-        <h3 class="block-header">भिडियाे</h3>
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+        </ol>
 
-        <iframe width="230" height="130" src="https://www.youtube.com/embed/zuxzE7--RYM" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            {% for p in vacancy_list %}
+            {% if forloop.counter == 1 %}
+            <div class="item active">
+                {% else %}
+                <div class="item">
+                    {% endif %}
+                    <img src="{{ p.vacancy_image.url }}" alt="Image" width="460" height="345">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
 
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-3 ml-auto">
-        <h3 class="block-header">प्रगति विवरण</h3>
-        <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the</p>
-    </div>
-    <div class="col-lg-9 ml-auto">
-        <h3 class="block-header">नागरिक वडापत्र</h3>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col">क्र‍स‍</th>
-                <th scope="col">सेवाकाे विवरण</th>
-                <th scope="col">शाखा/इका</th>
-                <th scope="col">काेठा न‌‍</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">१</th>
-                <td>घटना दर्ता</td>
-                <td>पन्जीकरण इकाइ</td>
-                <td>१०</td>
-            </tr>
-            <tr>
-                <th scope="row">१</th>
-                <td>घटना दर्ता</td>
-                <td>पन्जीकरण इकाइ</td>
-                <td>१०</td>
-            </tr>
-
-            </tbody>
-        </table>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
     </div>
 </div>
 {% endblock content %}
@@ -74,19 +53,19 @@
             <p class="aligncenter">
                 <img src="{{ official.official_image.url }}" border="4" width="220" height="220" alt="Officials image"/>
             </p>
-            <h4 class="official-name" style="text-align: center">{{ official.official_name }} </h4>
-            <h4 class="official-title" style="text-align: center"> {{ official.official_designation }} </h4>
+            <h4 class="official-name" style="text-align: center; color:green; font-size: 22px;">{{ official.official_name }} </h4>
+            <h4 class="official-title" style="text-align: center; color:green; font-size: 22px;"> {{ official.official_designation }} </h4>
             <h4 class="official-phoneno" style="text-align: center"> {{ official.official_phoneno }} </h4>
         </div>
         {% endfor %}
     </div>
 </div>
 
- {% for office in office_list %}
-                <h3>कार्यालयको नाम: {{ office.office_name }}, {{ office.office_sec_name }}</h3>
-                <h3>{{ office.office_address_locallevel }}, {{ office.office_address_district }}</h3>
-                <h3>{{ office.office_address_province }}, नेपाल |</h3>
-                <h3>वेवसाइट: {{ office.office_website }}, इमेल: {{ office.office_email }} |</h3>
-                <h3>सम्पर्क नं. {{ office.office_phoneno }}, आपतकालिन सम्पर्क नं. {{ office.office_emergencyno }}</h3>
-              {% endfor %}
+{% for office in office_list %}
+    <h3>कार्यालयको नाम: {{ office.office_name }}, {{ office.office_sec_name }}</h3>
+    <h3>{{ office.office_address_locallevel }}, {{ office.office_address_district }}</h3>
+    <h3>{{ office.office_address_province }}, नेपाल |</h3>
+    <h3>वेवसाइट: {{ office.office_website }}, इमेल: {{ office.office_email }} |</h3>
+    <h3>सम्पर्क नं. {{ office.office_phoneno }}, आपतकालिन सम्पर्क नं. {{ office.office_emergencyno }}</h3>
+{% endfor %}
 {% endblock content2 %}
