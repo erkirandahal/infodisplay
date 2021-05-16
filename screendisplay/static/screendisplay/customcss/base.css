@@ -19,3 +19,7 @@
   margin-right: 0;
   font-weight: bold;
 }
+
+.item h4 {
+    line-height:5cm;
+}

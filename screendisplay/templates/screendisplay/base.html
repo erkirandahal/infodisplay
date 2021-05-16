@@ -45,17 +45,20 @@
             padding-right: 1cm;
         }
         .card-header img {
-          float: left;
-          padding-left
-          width: 100px;
-          height: 100px;
-          background: #555;
-        }
+            float: left;
+            padding-left: 18cm;
 
+        }
         .card-header h3 {
           position: relative;
-          top: 18px;
-          left: 10px;
+          padding-right:20cm;
+          line-height: 0.25cm;
+        }
+        .infoHeader h4{
+            line-height:1cm;
+        }
+        .item h4{
+            line-height:5cm;
         }
 
     </style>
@@ -81,13 +84,15 @@
                         <div class="card">
                             <div class="card-header">
                                 {% for office in officeinfo_list %}
-                                <img src="{{ office.office_image.url }}" alt="Image" width="80" height="80">
-                                <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_name }}</h3>
-                                <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_sec_name }}</h3>
+                                <img src="{{ office.office_image.url }}" alt="Image">
+                                <h3 style="color:red; text-align:center; font-size: 26px;">{{ office.office_name }}</h3>
+                                <h3 style="color:red; text-align:center; font-size: 26px;">{{ office.office_sec_name }}</h3>
 <!--                                <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_address_locallevel }}, {{ office.office_address_district }}</h3>-->
 <!--                                <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_address_district }}</h3>-->
                                 {% endfor %}
-                                <h4 style="background-color:red; text-align: center; font-size:24px; font-weight:bold"> भीमेश्वर नगरपालिका
+                                </div>
+                            <div class="InfoHeader">
+                                <h4 style="background-color:red; text-align: center; font-size:26px; font-weight:bold"> भीमेश्वर नगरपालिका
                                     डिजिटल सूचना
                                     बोर्ड </h4>
                             </div>
