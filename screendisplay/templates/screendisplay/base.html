@@ -36,6 +36,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <style type="text/css">
+        .row-official {
+            padding-left: 1cm;
+            padding-right: 1cm;
+        }
+        .row-maincontent {
+            padding-left: 0.5cm;
+            padding-right: 1cm;
+        }
+
     </style>
     {% if title %}
     <title>Django Blog - {{ title }} </title>
@@ -59,6 +68,7 @@
                         <div class="card">
                             <div class="card-header">
                                 {% for office in officeinfo_list %}
+                                <img src="{{ office.office_image.url }}" alt="Image" width="80" height="80">
                                 <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_name }}</h3>
                                 <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_sec_name }}</h3>
 <!--                                <h3 style="color:red; text-align:center; font-size: 24px;">{{ office.office_address_locallevel }}, {{ office.office_address_district }}</h3>-->
@@ -68,8 +78,8 @@
                                     डिजिटल सूचना
                                     बोर्ड </h4>
                             </div>
-                            <div class="card-body row">
-                                <div class="row col-md-10">
+                            <div class="card-body row-maincontent ">
+                                <div class="row col-md-8">
                                     <div class="col-md-12">
                                         {% if messages %}
                                         {% for message in messages %}
@@ -81,7 +91,7 @@
                                         {% block content %}{% endblock %}
                                     </div>
                                 </div>
-                                <div class="card-body row col-md-1">
+                                <div class="card-body row-official col-md-3">
                                     {% block content2 %}{% endblock %}
 
                                 </div>
