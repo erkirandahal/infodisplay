@@ -41,8 +41,21 @@
             padding-right: 1cm;
         }
         .row-maincontent {
-            padding-left: 0.5cm;
+            padding-left: 1cm;
             padding-right: 1cm;
+        }
+        .card-header img {
+          float: left;
+          padding-left
+          width: 100px;
+          height: 100px;
+          background: #555;
+        }
+
+        .card-header h3 {
+          position: relative;
+          top: 18px;
+          left: 10px;
         }
 
     </style>
@@ -91,8 +104,12 @@
                                         {% block content %}{% endblock %}
                                     </div>
                                 </div>
-                                <div class="card-body row-official col-md-3">
+                                <div class="card-body row-official col-md-2">
                                     {% block content2 %}{% endblock %}
+
+                                </div>
+                                <div class="card-body row-extra col-md-2">
+                                    {% block content3 %}{% endblock %}
 
                                 </div>
 

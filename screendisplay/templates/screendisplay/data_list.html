@@ -60,12 +60,30 @@
         {% endfor %}
     </div>
 </div>
-
-{% for office in office_list %}
-    <h3>कार्यालयको नाम: {{ office.office_name }}, {{ office.office_sec_name }}</h3>
-    <h3>{{ office.office_address_locallevel }}, {{ office.office_address_district }}</h3>
-    <h3>{{ office.office_address_province }}, नेपाल |</h3>
-    <h3>वेवसाइट: {{ office.office_website }}, इमेल: {{ office.office_email }} |</h3>
-    <h3>सम्पर्क नं. {{ office.office_phoneno }}, आपतकालिन सम्पर्क नं. {{ office.office_emergencyno }}</h3>
-{% endfor %}
 {% endblock content2 %}
+
+
+    {% block content3 %}
+<!-- About Section Content-->
+<div class="row">
+    <div class="official-block">
+        <h3 class="block-header" style="color:red; text-align:center; font-weight:bold">पदाधिकारी</h3>
+        {% for official in official_list %}
+        <div class="official-head">
+            <p class="aligncenter">
+                <img src="{{ official.official_image.url }}" border="4" width="220" height="220" alt="Officials image"/>
+            </p>
+            <h4 class="official-name" style="text-align: center; color:green; font-size: 22px;">{{ official.official_name }} </h4>
+            <h4 class="official-title" style="text-align: center; color:green; font-size: 22px;"> {{ official.official_designation }} </h4>
+            <h4 class="official-phoneno" style="text-align: center"> {{ official.official_phoneno }} </h4>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content3 %}
+
+
+
+
+
+</div>
