@@ -259,7 +259,7 @@ class OfficeDetailView(DetailView):
 
 
 class AlldisplaydataListView(ListView):
-	template_name = 'screendisplay/data_list.html'
+	template_name = 'screendisplay/home.html'
 	queryset = Vacancy.objects.all()
 
 	def get_context_data(self, **kwargs):
